@@ -33,7 +33,36 @@ public class Tienda {
             System.out.print("Seleccione una opción: ");
             
             int op = sc.nextInt();
-            
+        
+            switch (op) {
+                case 1 -> {
+                    System.out.print("Nombre del producto: ");
+                    String nombre = sc.next();
+                    System.out.print("Precio: ");
+                    double precio = sc.nextDouble();
+                    System.out.print("Stock inicial: ");
+                    int stock = sc.nextInt();
+
+                    arrayProductos.add(new Productos(nombre, precio, stock));
+                    System.out.println("Producto añadido correctamente.");
+                }
+                
+                case 2 -> {
+                    System.out.println("\n--- INVENTARIO ACTUAL ---");
+                    if(arrayProductos.isEmpty()) {
+                        System.out.println("No hay productos.");
+                    } else {
+                        for(int i=0; i<arrayProductos.size(); i++) {
+                            System.out.println(i + ". " + arrayProductos.get(i).getNombre() + " - " + arrayProductos.get(i).getPrecios()
+                            + "€ - Stock: " + arrayProductos.get(i).getStock());
+                        }
+                    }
+                }
+                default -> {
+
+                }
+            }
+
             if(op == 1) { 
                 System.out.print("Nombre del producto: ");
                 String nombre = sc.next();
