@@ -106,10 +106,6 @@ public class Tienda {
                         System.out.println("Error: Producto no encontrado.");
                     }
                 }
-
-                case 4 ->{
-                    break;
-                }
             }
         }
     }
