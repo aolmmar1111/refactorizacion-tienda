@@ -20,6 +20,9 @@ public class Tienda {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int op = 0;
+        final int STOCK_BAJO = 3;
+        final double DESCUENTO_PORCENTAJE = 0.9;
+        final int PRECIO_DESCUENTO = 50;
 
         // Datos de prueba iniciales
         arrayProductos.add(new Productos("Camiseta", 15.0, 10));
@@ -54,7 +57,7 @@ public class Tienda {
                         System.out.println("No hay productos.");
                     } else {
                         for (int i = 0; i < arrayProductos.size(); i++) {
-                            System.out.println(i + ". " + arrayProductos.get(i).getNombre() + " - "
+                            System.out.println(i + " . " + arrayProductos.get(i).getNombre() + " - "
                                     + arrayProductos.get(i).getPrecios()
                                     + "€ - Stock: " + arrayProductos.get(i).getStock());
                         }
@@ -83,16 +86,16 @@ public class Tienda {
                         if (arrayProductos.get(pos).getStock() >= cant) {
                             double total = cant * arrayProductos.get(pos).getPrecios();
 
-                            if (total > 50) {
+                            if (total > PRECIO_DESCUENTO) {
                                 System.out.println("¡Oferta! Descuento aplicado por compra superior a 50€");
-                                total = total * 0.90;
+                                total = total * DESCUENTO_PORCENTAJE;
                             }
 
                             arrayProductos.get(pos).setStock((arrayProductos.get(pos).getStock() - cant));
                             System.out.println("Venta realizada. Total a pagar: " + total + "€");
 
                             Venta.crearInstancia().log("Venta de " + cant + "x " + arrayProductos.get(pos).getNombre() + " registrada.");
-                            if (arrayProductos.get(pos).getStock() < 3) {
+                                if (arrayProductos.get(pos).getStock() < STOCK_BAJO) {
                                 Venta.crearInstancia().log("Alerta de STOCK BAJO Para"  + arrayProductos.get(pos).getNombre());
                             }
 
