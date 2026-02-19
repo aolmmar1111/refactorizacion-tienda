@@ -91,12 +91,9 @@ public class Tienda {
                             arrayProductos.get(pos).setStock((arrayProductos.get(pos).getStock() - cant));
                             System.out.println("Venta realizada. Total a pagar: " + total + "€");
 
-                            // Debería ser Singleton
-                            System.out.println("[LOG SYSTEM]: Venta de " + cant + "x "
-                                    + arrayProductos.get(pos).getNombre() + " registrada.");
+                            Venta.crearInstancia().log("Venta de " + cant + "x " + arrayProductos.get(pos).getNombre() + " registrada.");
                             if (arrayProductos.get(pos).getStock() < 3) {
-                                System.out.println("[LOG SYSTEM]: ALERTA DE STOCK BAJO para "
-                                        + arrayProductos.get(pos).getNombre());
+                                Venta.crearInstancia().log("Alerta de STOCK BAJO Para"  + arrayProductos.get(pos).getNombre());
                             }
 
                         } else {
